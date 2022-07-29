@@ -2,6 +2,7 @@ var currentDayEl = $('#current-day');
 var currentTimeEl = $('#current-time');
 var workWarningEl = $('#work-warning');
 var timeBlockEl = $('#timeblock-container')
+var confirmHoursEl = $('#confirm-hours')
 
 var now = moment();
 var numWorkHours = 13;
@@ -34,16 +35,15 @@ function updateTimeblocks() {
     // get the current hour
     var momentHour = now.hour();
 
-
     for (var i = 0; i < timeBlocks.length; i++) {
         // Get the list of current tasks
-        currentTime = timeBlockEl.children().eq(i).find('.hour').text();
-        currentTask = localStorage.getItem(currentTime);
+        var currentTime = timeBlockEl.children().eq(i).find('.hour').text();
+        var currentTask = localStorage.getItem(currentTime);
         // If local storage is empty, make it an empty string
         if (currentTask == null) {
             localStorage.setItem(currentTime, '');
         }
-        //update the timeblocks with past, present, or future styles
+        // update the timeblocks with past, present, or future styles
         currentTimeBlock = timeBlockEl.children().eq(i).find('.description');
         if (timeBlocks[i] < momentHour) {
             currentTimeBlock.addClass('past');
@@ -86,7 +86,7 @@ function callback() {
 };
 
 function init() {
-    tellTime();
+    tellTime(); 
     generateTimeBlocks();
     updateTimeblocks();
     $("#effect").hide();
