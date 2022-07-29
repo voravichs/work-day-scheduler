@@ -4,10 +4,24 @@ var workWarningEl = $('#work-warning');
 var timeBlockEl = $('#timeblock-container')
 
 var now = moment();
+var numWorkHours = 13;
 var timeBlocks = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
 var timeBlockNames = ['9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM'];
 var isWorkTime = false;
 var savedTasks = [];
+
+// Generates the time blocks
+function generateTimeBlocks() {
+    for (let i = 0; i < numWorkHours; i++) {
+        timeBlockEl.append(
+            '<section class= \'row time-block\'> \n' +
+                '<div class=\"col-2 hour text-dark p-4\">' + timeBlockNames[i] +'</div> \n' +
+                '<textarea class=\"col-8 description\"></textarea> \n' +
+                '<div class=\"col-2 saveBtn border border-secondary p-4\"><i>💾</i></div> \n' +
+            '</section>'
+        )
+    }
+}
 
 // Displays the date and time in the header
 function tellTime() {
@@ -73,6 +87,7 @@ function callback() {
 
 function init() {
     tellTime();
+    generateTimeBlocks();
     updateTimeblocks();
     $("#effect").hide();
 }
