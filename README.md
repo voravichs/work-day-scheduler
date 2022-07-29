@@ -22,7 +22,13 @@ A user can input anything into the text input boxes and it will save them to loc
 
 ## Screenshots
 
+* Scheduler, with a full schedule
 
+![Work day scheduler with a fulled schedule](./assets/images/screen1.png)
+
+* Local Storage Saving Feedback
+
+![work day scheduler with a slightly transparent blue box saying "save successful" on the bottom right](./assets/images/screen2.png)
 
 ## Credits
 
